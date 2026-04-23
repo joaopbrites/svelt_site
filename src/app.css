@@ -8,62 +8,77 @@
   }
 
   body {
-    @apply bg-white text-gray-900 font-display transition-colors duration-300;
-  }
-
-  body.dark {
-    @apply bg-surface text-gray-100;
+    @apply bg-dark-bg text-paper font-display transition-colors duration-300;
+    /* dot halftone sutil — rascunho em papel escuro */
+    background-image: radial-gradient(rgba(197, 187, 160, 0.06) 1px, transparent 1px);
+    background-size: 18px 18px;
   }
 }
 
 @layer components {
   .section-card {
-    @apply rounded-xl border border-gray-200 bg-gray-50 p-5 shadow-sm transition-all duration-200;
-  }
-
-  .dark .section-card {
-    @apply border-border bg-surface-2 shadow-none;
+    @apply border-2 border-dark-border bg-dark-surface p-5 transition-all duration-200 hover:border-paper/25;
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.65);
   }
 
   .tag {
-    @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-mono font-medium;
+    @apply inline-flex items-center border-2 border-current px-3 py-1 text-xs font-mono font-bold uppercase tracking-wider;
   }
 
   .nav-link {
-    @apply text-sm font-mono text-gray-500 transition-colors duration-150 hover:text-gray-900;
-  }
-
-  .dark .nav-link {
-    @apply text-gray-400 hover:text-accent;
+    @apply text-sm font-mono uppercase tracking-wider text-paper/50 transition-all duration-150 hover:text-neon-pink;
   }
 
   .btn-primary {
-    @apply inline-flex items-center gap-2 rounded-lg bg-gray-900 px-4 py-2 text-sm font-medium text-white transition-all duration-150 hover:bg-gray-700;
-  }
-
-  .dark .btn-primary {
-    @apply bg-accent text-surface hover:bg-accent-dim;
+    @apply inline-flex items-center gap-2 border-2 border-neon-pink bg-neon-pink px-4 py-2 text-sm font-bold uppercase tracking-wider text-paper transition-all duration-150 hover:bg-transparent hover:text-neon-pink;
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.6);
   }
 
   .btn-outline {
-    @apply inline-flex items-center gap-2 rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 transition-all duration-150 hover:border-gray-500 hover:text-gray-900;
+    @apply inline-flex items-center gap-2 border-2 border-paper/40 bg-transparent px-4 py-2 text-sm font-bold uppercase tracking-wider text-paper/70 transition-all duration-150 hover:border-paper/80 hover:text-paper;
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.6);
   }
 
-  .dark .btn-outline {
-    @apply border-border text-gray-300 hover:border-accent hover:text-accent;
+  /* sem glow — sombra dura estilo impressão/carimbo */
+  .neon-heading {
+    @apply font-graffiti uppercase;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.9);
+  }
+
+  .glitch-text {
+    position: relative;
+    animation: glitch 5s linear infinite;
   }
 }
 
-/* Progress bar animation */
+/* Progress bar */
 .progress-fill {
-  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: width 1s ease;
 }
 
-/* Terminal cursor */
+/* Cursor piscante */
 .cursor::after {
   content: '|';
   animation: blink 1s step-end infinite;
 }
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 @keyframes blink {
   0%, 100% { opacity: 1; }

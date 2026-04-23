@@ -1,41 +1,53 @@
-# Portfolio Pessoal - Svelte + Tailwind
+# 🧑‍💻 Portfólio — João Pedro Brites
 
-Página pessoal desenvolvida com Svelte e Tailwind CSS para a disciplina de Programação Web.
+Página pessoal desenvolvida com **Svelte + Tailwind CSS** para a disciplina GAC116 — Programação Web (2026/1).
 
-## 🚀 Tecnologias
+## ✨ Versões
 
-- Svelte 4
-- Vite 5
-- Tailwind CSS 3
-- Font Awesome 6.5.0
+| Versão | Framework CSS | Branch/Pasta |
+|--------|--------------|-------------|
+| **v1** | Bootstrap 5 | `bootstrap/` |
+| **v2** | **Tailwind CSS + Svelte** | `svelte-tailwind/` (este) |
 
-## 📦 Instalação
+## 🚀 Funcionalidades
+
+- ✅ Layout totalmente responsivo (mobile-first)
+- ✅ Tema claro / escuro com toggle (armazenado em `localStorage`)
+- ✅ Animação de typewriter na headline
+- ✅ Scroll reveal (Intersection Observer)
+- ✅ Barras de progresso animadas
+- ✅ Timeline de experiência profissional
+- ✅ Navegação com menu colapsável em mobile
+
+## 🛠️ Como rodar localmente
 
 ```bash
 npm install
-```
-
-## 🔧 Desenvolvimento
-
-```bash
 npm run dev
 ```
 
-## 🏗️ Build
+Acesse: http://localhost:5173
+
+## 📦 Build para produção (GitHub Pages)
 
 ```bash
 npm run build
 ```
 
-Os arquivos estáticos serão gerados na pasta `dist/`.
+Os arquivos finais ficam em `dist/`.
 
-## 🌐 Deploy
+### Deploy no GitHub Pages
 
-Esta página está publicada via GitHub Pages a partir da pasta `dist/`.
+1. Faça o push do repositório no GitHub
+2. Vá em **Settings → Pages**
+3. Escolha a branch `gh-pages` ou configure uma GitHub Action
 
-## 👤 Autor
+**Exemplo de GitHub Action** (`.github/workflows/deploy.yml`):
 
-João Pedro Brites - Sistemas de Informação - UFLA
+```yaml
+name: Deploy to GitHub Pages
+on:
+  push:
     branches: [main]
 jobs:
   deploy:

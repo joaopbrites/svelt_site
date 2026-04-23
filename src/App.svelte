@@ -1,32 +1,26 @@
+<svelte:head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Barlow+Condensed:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+</svelte:head>
+
 <script>
   import { onMount } from 'svelte'
   import perfil from './lib/perfil.jpg'
 
-  let dark = false
   let menuOpen = false
 
   const navItems = [
     { href: '#sobre', label: 'Sobre' },
-    { href: '#habilidades', label: 'Habilidades' },
+    { href: '#habilidades', label: 'Skills' },
     { href: '#projetos', label: 'Projetos' },
+    { href: '#sites', label: 'Sites' },
     { href: '#interesses', label: 'Interesses' },
     { href: '#contato', label: 'Contato' },
   ]
 
-  const techTags = [
-    { label: 'Python', color: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-900/40 dark:text-cyan-300' },
-    { label: 'Linux', color: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/40 dark:text-yellow-300' },
-    { label: 'SQL', color: 'bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300' },
-    { label: 'C++', color: 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900/40 dark:text-indigo-300' },
-    { label: 'Git / GitHub', color: 'bg-orange-100 text-orange-800 dark:bg-orange-900/40 dark:text-orange-300' },
-    { label: 'Docker', color: 'bg-rose-100 text-rose-800 dark:bg-rose-900/40 dark:text-rose-300' },
-    { label: 'POO / SOLID', color: 'bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-300' },
-    { label: 'HTML / CSS / JS', color: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-900/40 dark:text-cyan-300' },
-    { label: 'Bootstrap', color: 'bg-violet-100 text-violet-800 dark:bg-violet-900/40 dark:text-violet-300' },
-    { label: 'Tailwind CSS', color: 'bg-sky-100 text-sky-800 dark:bg-sky-900/40 dark:text-sky-300' },
-  ]
-
-  const competencies = [
+  const competencias = [
     'Organização de código e versionamento com Git/GitHub',
     'Modelagem e consultas em banco de dados relacional',
     'Lógica de programação, estruturas de dados e POO',
@@ -34,63 +28,100 @@
     'Colaboração em projetos acadêmicos e de extensão',
   ]
 
+  const interesses = [
+    'Engenharia de Software aplicada a projetos reais',
+    'Análise de Dados e estatística',
+    'Desenvolvimento Web (Front-end e Back-end)',
+    'Banco de Dados e modelagem relacional',
+    'Estruturas de dados e lógica de programação',
+    'Automação e produtividade no Linux',
+  ]
+
+  const techTags = [
+    { label: 'Python', color: 'text-neon-cyan border-neon-cyan' },
+    { label: 'Linux', color: 'text-neon-yellow border-neon-yellow' },
+    { label: 'SQL', color: 'text-neon-purple border-neon-purple' },
+    { label: 'C++', color: 'text-neon-pink border-neon-pink' },
+    { label: 'Git / GitHub', color: 'text-neon-green border-neon-green' },
+    { label: 'Docker', color: 'text-neon-cyan border-neon-cyan' },
+    { label: 'POO / SOLID', color: 'text-neon-purple border-neon-purple' },
+    { label: 'HTML / CSS / JS', color: 'text-neon-pink border-neon-pink' },
+    { label: 'Svelte', color: 'text-neon-pink border-neon-pink' },
+    { label: 'Tailwind', color: 'text-neon-cyan border-neon-cyan' },
+  ]
+
   const skills = [
-    { name: 'Python', level: 65, label: 'Intermediário' },
-    { name: 'SQL e Modelagem Relacional', level: 30, label: 'Em evolução' },
-    { name: 'HTML / CSS / JavaScript', level: 65, label: 'Intermediário' },
-    { name: 'Git / GitHub / Linux', level: 60, label: 'Intermediário' },
-    { name: 'Dados e Estatística', level: 30, label: 'Em evolução' },
+    { name: 'Python', level: 65, color: 'bg-neon-cyan' },
+    { name: 'SQL e Modelagem', level: 30, color: 'bg-neon-purple' },
+    { name: 'HTML / CSS / JS', level: 65, color: 'bg-neon-pink' },
+    { name: 'Git / GitHub / Linux', level: 60, color: 'bg-neon-green' },
+    { name: 'Dados e Estatística', level: 30, color: 'bg-neon-yellow' },
   ]
 
   const projects = [
     {
-      title: 'Trabalho Engenharia de Software',
+      title: 'Trabalho Eng. Software',
       desc: 'Projeto web acadêmico com estrutura maior de código e organização por módulos.',
-      tags: ['TypeScript', 'JavaScript', 'HTML/CSS'],
+      tags: ['TypeScript', 'JavaScript'],
       icon: 'fa-diagram-project',
+      color: 'neon-cyan',
       repo: 'https://github.com/joaopbrites/Trabalho-Engenharia-software',
     },
     {
-      title: 'A Provação dos Padawans',
-      desc: 'Jogo web desenvolvido em disciplina, com foco em lógica e experiência visual.',
+      title: 'Provação dos Padawans',
+      desc: 'Jogo web desenvolvido em disciplina, foco em lógica e experiência visual.',
       tags: ['HTML', 'CSS', 'JavaScript'],
       icon: 'fa-gamepad',
+      color: 'neon-pink',
       repo: 'https://github.com/joaopbrites/a-provacao-dos-padawans',
     },
     {
       title: 'GeoNetCast (ShowCast/TerraCast)',
-      desc: 'Atuação em remodelagem e adaptação de fluxo para conversão de dados de satélite em páginas HTML para visualização rápida.',
-      tags: ['Python', 'Automação', 'HTML'],
+      desc: 'Remodelagem e adaptação de fluxo para conversão de dados de satélite em páginas HTML para visualização rápida.',
+      tags: ['Python', 'Automação'],
       icon: 'fa-satellite-dish',
+      color: 'neon-green',
       repo: '#contato',
-      repoLabel: 'Detalhes no contato',
+      repoLabel: 'Info no contato',
     },
   ]
 
-  function toggleTheme() {
-    dark = !dark
-    document.documentElement.classList.toggle('dark', dark)
-    localStorage.setItem('theme', dark ? 'dark' : 'light')
-  }
+  const sites = [
+    {
+      title: 'joaopbrites.dev',
+      desc: 'Site profissional com portfólio e currículo interativo.',
+      status: 'Em construção',
+      url: 'https://joaopbrites.dev',
+      icon: 'fa-briefcase',
+      color: 'neon-cyan',
+    },
+    {
+      title: 'oqcefez.com',
+      desc: 'Blog underground com anotações, experimentos e projetos alternativos.',
+      status: 'Em construção',
+      url: 'https://oqcefez.com',
+      icon: 'fa-newspaper',
+      color: 'neon-pink',
+    },
+  ]
 
   function setupReveal() {
     const els = document.querySelectorAll('.reveal')
     const io = new IntersectionObserver(
-      (entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add('visible')),
+      (entries) => entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible')
+        }
+      }),
       { threshold: 0.1 }
     )
     els.forEach((el) => io.observe(el))
   }
 
   onMount(() => {
-    const saved = localStorage.getItem('theme')
-    if (saved === 'dark') {
-      dark = true
-      document.documentElement.classList.add('dark')
-    }
-
+    document.documentElement.classList.add('dark')
+    document.body.classList.add('dark')
     setupReveal()
-
     setTimeout(() => {
       document.querySelectorAll('.progress-fill').forEach((el) => {
         el.style.width = el.dataset.width
@@ -99,168 +130,100 @@
   })
 </script>
 
-<nav class="sticky top-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur-md dark:border-border dark:bg-surface/80">
+<nav class="sticky top-0 z-50 border-b-2 border-neon-cyan/30 bg-dark-bg/95 backdrop-blur-md">
   <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-    <a href="#top" class="flex items-center gap-2 font-mono text-sm font-semibold text-gray-900 dark:text-accent">
-      <span class="rounded bg-gray-900 px-1.5 py-0.5 text-xs text-white dark:bg-accent dark:text-surface">&gt;_</span>
-      Meu Portfólio
+    <a href="#top" class="group flex items-center gap-2 font-mono text-sm font-bold uppercase tracking-wider">
+      <span class="border-2 border-neon-pink bg-neon-pink px-2 py-0.5 text-xs font-black text-paper">&gt;_</span>
+      <span class="font-graffiti text-paper group-hover:animate-glitch">J.P.BRITES</span>
     </a>
-
     <ul class="hidden items-center gap-6 md:flex">
       {#each navItems as item}
-        <li><a href={item.href} class="nav-link">{item.label}</a></li>
+        <li><a href={item.href} class="nav-link">[{item.label}]</a></li>
       {/each}
     </ul>
-
-    <div class="flex items-center gap-2">
-      <button
-        on:click={toggleTheme}
-        class="flex h-8 w-8 items-center justify-center rounded-lg border border-gray-200 text-gray-600 transition hover:border-gray-400 dark:border-border dark:text-gray-400 dark:hover:text-accent"
-        aria-label="Alternar tema"
-      >
-        {#if dark}
-          <i class="fa-solid fa-sun text-xs"></i>
-        {:else}
-          <i class="fa-solid fa-moon text-xs"></i>
-        {/if}
-      </button>
-
-      <button
-        class="flex h-8 w-8 items-center justify-center rounded-lg border border-gray-200 text-gray-600 md:hidden dark:border-border dark:text-gray-400"
-        on:click={() => (menuOpen = !menuOpen)}
-        aria-label="Menu"
-      >
-        <i class="fa-solid {menuOpen ? 'fa-xmark' : 'fa-bars'} text-xs"></i>
-      </button>
-    </div>
+    <button class="flex h-8 w-8 items-center justify-center border-2 border-neon-pink text-neon-pink transition-all hover:bg-neon-pink hover:text-paper md:hidden" on:click={() => (menuOpen = !menuOpen)}>
+      <i class="fa-solid {menuOpen ? 'fa-xmark' : 'fa-bars'} text-xs"></i>
+    </button>
   </div>
-
   {#if menuOpen}
-    <div class="border-t border-gray-200 bg-white px-4 py-3 dark:border-border dark:bg-surface-2">
+    <div class="border-t-2 border-neon-cyan/30 bg-dark-surface px-4 py-3">
       {#each navItems as item}
-        <a
-          href={item.href}
-          class="block py-2 font-mono text-sm text-gray-600 dark:text-gray-300"
-          on:click={() => (menuOpen = false)}
-        >{item.label}</a>
+        <a href={item.href} class="block py-2 font-mono text-sm uppercase text-neon-cyan hover:text-neon-pink" on:click={() => (menuOpen = false)}>[{item.label}]</a>
       {/each}
     </div>
   {/if}
 </nav>
 
-<header id="top" class="relative overflow-hidden bg-white py-20 dark:bg-surface">
-  <div class="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] bg-[size:40px_40px] opacity-40 dark:bg-[linear-gradient(to_right,#30363d_1px,transparent_1px),linear-gradient(to_bottom,#30363d_1px,transparent_1px)] dark:opacity-30"></div>
-  <div class="pointer-events-none absolute -top-32 left-1/2 h-64 w-96 -translate-x-1/2 rounded-full bg-emerald-400/10 blur-3xl dark:bg-accent/10"></div>
-
+<header id="top" class="relative overflow-hidden bg-dark-bg py-20">
+  <div class="pointer-events-none absolute inset-0" style="background-image: repeating-linear-gradient(45deg, rgba(197,187,160,0.04) 0px, rgba(197,187,160,0.04) 1px, transparent 1px, transparent 10px); background-size: 14px 14px;"></div>
   <div class="relative mx-auto max-w-6xl px-4">
     <div class="flex flex-col items-center gap-10 lg:flex-row lg:items-start">
       <div class="flex-shrink-0 text-center">
-        <img src={perfil} alt="Foto de perfil" class="mx-auto h-36 w-36 rounded-2xl border-2 border-gray-200 object-cover shadow-lg dark:border-border lg:h-44 lg:w-44" />
-
-        <div class="mt-3 flex flex-wrap justify-center gap-2">
-          <span class="tag bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">
-            Sistemas de Informação
-          </span>
-          <span class="tag bg-gray-100 text-gray-600 dark:bg-surface-3 dark:text-gray-400">
-            UFLA
-          </span>
+        <div class="group relative mx-auto h-40 w-40 lg:h-48 lg:w-48">
+          <img src={perfil} alt="João Pedro Brites" class="relative h-full w-full border-[3px] border-paper/30 object-cover" style="box-shadow: 6px 6px 0 rgba(0,0,0,0.75);" />
+        </div>
+        <div class="mt-4 flex flex-wrap justify-center gap-2">
+          <span class="tag text-neon-cyan border-neon-cyan">SI / UFLA</span>
+          <span class="tag text-neon-pink border-neon-pink">DEVELOPER</span>
         </div>
       </div>
-
-      <div class="text-center lg:text-left">
-        <p class="mb-2 font-mono text-xs text-gray-400 dark:text-gray-500">
-          <span class="text-emerald-500">➜</span>
-          <span class="text-blue-500 dark:text-blue-400"> ~/portfolio</span>
-          <span class="text-gray-400"> git:(main)</span>
+      <div class="flex-1 text-center lg:text-left">
+        <p class="mb-2 font-mono text-xs text-gray-500">
+          <span class="text-neon-green">➜</span> <span class="text-neon-cyan">~/underground</span> <span class="text-gray-600">git:(main)</span> <span class="animate-blink text-neon-yellow">▊</span>
         </p>
-
-        <h1 class="mb-1 font-display text-4xl font-bold tracking-tight text-gray-900 dark:text-white lg:text-5xl">
-          João Pedro <span class="text-emerald-600 dark:text-accent">Brites</span>
+        <h1 class="mb-3 font-graffiti text-5xl font-black uppercase tracking-tight lg:text-6xl" style="text-shadow: 3px 3px 0 rgba(0,0,0,0.9);">
+          <span class="text-neon-cyan">João Pedro</span><br />
+          <span class="text-neon-pink">Brites</span>
         </h1>
-
-        <p class="mb-6 max-w-xl text-gray-600 dark:text-gray-400">
-          Bacharelando em Sistemas de Informação na UFLA, com interesse em engenharia de software,
-          dados e desenvolvimento web. Gosto de aprender na prática, construir projetos e evoluir
-          com consistência.
+        <p class="mb-6 max-w-2xl font-mono text-sm leading-relaxed text-gray-400">
+          <span class="text-neon-cyan">//</span> Bacharelando SI na UFLA.<br />
+          <span class="text-neon-pink">//</span> Interesse em eng. software, dados e dev web.<br />
+          <span class="text-neon-green">//</span> Aprender fazendo. Construir. Evoluir.
         </p>
-
         <div class="flex flex-wrap justify-center gap-3 lg:justify-start">
-          <a href="#projetos" class="btn-primary">
-            <i class="fa-solid fa-diagram-project text-xs"></i>
-            Ver projetos
-          </a>
-          <a href="#contato" class="btn-outline">
-            <i class="fa-solid fa-envelope text-xs"></i>
-            Contato
-          </a>
-          <a href="https://github.com/joaopbrites" target="_blank" rel="noreferrer" class="btn-outline">
-            <i class="fa-brands fa-github text-xs"></i>
-            GitHub
-          </a>
-          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" class="btn-outline">
-            <i class="fa-brands fa-linkedin text-xs"></i>
-            LinkedIn
-          </a>
-        </div>
-
-        <div class="mt-8 grid gap-4 sm:grid-cols-2">
-          <div class="section-card p-4">
-            <p class="mb-1 text-xs font-mono text-gray-400">curso</p>
-            <p class="text-sm text-gray-700 dark:text-gray-300">Bacharelado em Sistemas de Informação - UFLA, previsão de conclusão em 2027.</p>
-          </div>
-          <div class="section-card p-4">
-            <p class="mb-1 text-xs font-mono text-gray-400">objetivo</p>
-            <p class="text-sm text-gray-700 dark:text-gray-300">Atuar com desenvolvimento de software e aprofundar atuação em engenharia e análise de dados.</p>
-          </div>
+          <a href="#projetos" class="btn-primary"><i class="fa-solid fa-code"></i> PROJETOS</a>
+          <a href="#contato" class="btn-outline"><i class="fa-solid fa-envelope"></i> CONTATO</a>
+          <a href="https://github.com/joaopbrites" target="_blank" rel="noreferrer" class="btn-outline"><i class="fa-brands fa-github"></i> GITHUB</a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" class="btn-outline"><i class="fa-brands fa-linkedin"></i> LINKEDIN</a>
         </div>
       </div>
     </div>
   </div>
 </header>
 
-<main class="bg-gray-50 pb-20 dark:bg-[#0a0e14]">
+<main class="bg-dark-bg pb-20">
   <section id="sobre" class="py-16">
     <div class="mx-auto max-w-6xl px-4">
       <div class="reveal mb-8">
-        <h2 class="font-display text-2xl font-bold text-gray-900 dark:text-white">Sobre</h2>
-        <p class="text-sm text-gray-500 dark:text-gray-400">Uma breve descrição do estudante e trajetória.</p>
+        <p class="mb-1 font-mono text-xs uppercase tracking-widest text-neon-cyan">[01_SOBRE]</p>
+        <h2 class="neon-heading font-graffiti text-3xl font-black uppercase text-neon-pink">Quem sou</h2>
       </div>
-
       <div class="reveal grid gap-6 lg:grid-cols-2">
         <div class="section-card">
-          <p class="mb-3 text-gray-700 dark:text-gray-300">
-            Sou de Bom Sucesso-MG e atualmente moro entre Bom Sucesso e Lavras por causa da
-            graduação. Tenho uma base boa em programação, banco de dados e resolução de problemas,
-            construída em aula e em projetos práticos.
+          <p class="mb-3 font-mono text-sm leading-relaxed text-gray-300">
+            Sou de Bom Sucesso-MG, atualmente moro entre Bom Sucesso e Lavras por causa da graduação. Base boa em programação, banco de dados e resolução de problemas, construída em aula e projetos práticos.
           </p>
-          <p class="text-gray-600 dark:text-gray-400">
-            Minha proposta com esta página é apresentar, de forma objetiva, minha trajetória,
-            os projetos que desenvolvi e os temas que estou estudando no momento.
+          <p class="font-mono text-sm text-gray-400">
+            Minha proposta aqui é apresentar de forma objetiva minha trajetória, projetos e temas que estou estudando.
           </p>
         </div>
-
         <div class="section-card">
-          <ul class="space-y-3">
+          <ul class="space-y-3 font-mono text-sm">
             <li class="flex items-start gap-3">
-              <i class="fa-solid fa-location-dot mt-0.5 text-emerald-500 dark:text-accent"></i>
-              <div>
-                <span class="text-xs font-mono text-gray-400">cidade</span>
-                <p class="text-sm text-gray-800 dark:text-gray-200">Bom Sucesso - MG (disponível para Lavras)</p>
-              </div>
+              <i class="fa-solid fa-location-dot mt-0.5 text-neon-cyan"></i>
+              <div><span class="text-xs uppercase text-gray-500">LOCAL</span><p class="text-gray-300">Bom Sucesso - MG (disponível para Lavras)</p></div>
             </li>
             <li class="flex items-start gap-3">
-              <i class="fa-solid fa-language mt-0.5 text-emerald-500 dark:text-accent"></i>
-              <div>
-                <span class="text-xs font-mono text-gray-400">idiomas</span>
-                <p class="text-sm text-gray-800 dark:text-gray-200">Português (nativo), Inglês (A2)</p>
-              </div>
+              <i class="fa-solid fa-graduation-cap mt-0.5 text-neon-pink"></i>
+              <div><span class="text-xs uppercase text-gray-500">FORMAÇÃO</span><p class="text-gray-300">SI - UFLA (2027)</p></div>
             </li>
             <li class="flex items-start gap-3">
-              <i class="fa-solid fa-laptop-code mt-0.5 text-emerald-500 dark:text-accent"></i>
-              <div>
-                <span class="text-xs font-mono text-gray-400">foco atual</span>
-                <p class="text-sm text-gray-800 dark:text-gray-200">Desenvolvimento de software e dados</p>
-              </div>
+              <i class="fa-solid fa-language mt-0.5 text-neon-yellow"></i>
+              <div><span class="text-xs uppercase text-gray-500">IDIOMAS</span><p class="text-gray-300">Português (nativo) · Inglês (A2)</p></div>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fa-solid fa-laptop-code mt-0.5 text-neon-green"></i>
+              <div><span class="text-xs uppercase text-gray-500">FOCO</span><p class="text-gray-300">Software & Dados</p></div>
             </li>
           </ul>
         </div>
@@ -271,43 +234,40 @@
   <section id="habilidades" class="py-16">
     <div class="mx-auto max-w-6xl px-4">
       <div class="reveal mb-8">
-        <p class="mb-1 font-mono text-xs text-emerald-600 dark:text-accent">// 02</p>
-        <h2 class="font-display text-2xl font-bold text-gray-900 dark:text-white">Habilidades</h2>
-        <p class="text-sm text-gray-500 dark:text-gray-400">Tecnologias e competências.</p>
+        <p class="mb-1 font-mono text-xs uppercase tracking-widest text-neon-pink">[02_SKILLS]</p>
+        <h2 class="neon-heading font-graffiti text-3xl font-black uppercase text-neon-cyan">Stack Técnica</h2>
       </div>
-
       <div class="reveal grid gap-6 lg:grid-cols-2">
         <div class="section-card">
-          <h3 class="mb-4 font-mono text-sm font-semibold text-gray-500 dark:text-gray-400">$ ls ./tecnologias/</h3>
-          <div class="flex flex-wrap gap-2">
+          <h3 class="mb-4 font-mono text-sm font-bold uppercase tracking-wider text-neon-cyan">$ ls ./tech/</h3>
+          <div class="flex flex-wrap gap-2 mb-5">
             {#each techTags as t}
               <span class="tag {t.color}">{t.label}</span>
             {/each}
           </div>
-          <hr class="my-4 border-gray-200 dark:border-border" />
-          <h3 class="mb-3 font-mono text-sm font-semibold text-gray-500 dark:text-gray-400">$ cat competencias.txt</h3>
-          <ul class="space-y-1.5 text-sm text-gray-700 dark:text-gray-300">
-            {#each competencies as item}
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500 text-xs"></i>{item}</li>
-            {/each}
-          </ul>
+          <div class="border-t border-dark-border pt-4">
+            <h3 class="mb-3 font-mono text-xs font-bold uppercase tracking-wider text-paper/50">$ cat competencias.txt</h3>
+            <ul class="space-y-2">
+              {#each competencias as c}
+                <li class="flex items-start gap-2 font-mono text-xs text-gray-400">
+                  <i class="fa-solid fa-check mt-0.5 text-neon-green" style="font-size: 10px;"></i>
+                  {c}
+                </li>
+              {/each}
+            </ul>
+          </div>
         </div>
-
         <div class="section-card">
-          <h3 class="mb-4 font-mono text-sm font-semibold text-gray-500 dark:text-gray-400">$ skills --level</h3>
+          <h3 class="mb-4 font-mono text-sm font-bold uppercase tracking-wider text-neon-pink">$ cat levels.json</h3>
           <div class="space-y-4">
             {#each skills as s}
               <div>
-                <div class="mb-1 flex justify-between">
-                  <span class="text-sm font-medium text-gray-700 dark:text-gray-300">{s.name}</span>
-                  <span class="font-mono text-xs text-gray-400">{s.label}</span>
+                <div class="mb-1.5 flex justify-between font-mono text-xs">
+                  <span class="uppercase text-gray-300">{s.name}</span>
+                  <span class="text-gray-500">{s.level}%</span>
                 </div>
-                <div class="h-1.5 w-full overflow-hidden rounded-full bg-gray-200 dark:bg-surface-3">
-                  <div
-                    class="progress-fill h-full rounded-full bg-emerald-500 dark:bg-accent"
-                    style="width: 0%"
-                    data-width="{s.level}%"
-                  ></div>
+                <div class="h-2 w-full overflow-hidden rounded-full bg-dark-elevated">
+                  <div class="progress-fill h-full rounded-full transition-all duration-1000 {s.color}" style="width: 0%" data-width="{s.level}%"></div>
                 </div>
               </div>
             {/each}
@@ -320,31 +280,54 @@
   <section id="projetos" class="py-16">
     <div class="mx-auto max-w-6xl px-4">
       <div class="reveal mb-8">
-        <p class="mb-1 font-mono text-xs text-emerald-600 dark:text-accent">// 03</p>
-        <h2 class="font-display text-2xl font-bold text-gray-900 dark:text-white">Projetos</h2>
-        <p class="text-sm text-gray-500 dark:text-gray-400">Alguns trabalhos já desenvolvidos.</p>
+        <p class="mb-1 font-mono text-xs uppercase tracking-widest text-neon-green">[03_PROJETOS]</p>
+        <h2 class="neon-heading font-graffiti text-3xl font-black uppercase text-neon-pink">Trabalhos</h2>
       </div>
-
       <div class="reveal grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {#each projects as p}
-          <div class="section-card group flex flex-column hover:-translate-y-1 hover:shadow-md transition-all duration-200">
-            <div class="mb-4 flex items-center gap-3">
-              <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 dark:bg-emerald-900/30 dark:text-accent">
-                <i class="fa-solid {p.icon}"></i>
+          <div class="group section-card flex flex-col transition-all duration-300 hover:-translate-y-2">
+            <div class="mb-4 flex items-center justify-between">
+              <div class="flex h-12 w-12 items-center justify-center rounded border-2 border-{p.color} bg-{p.color}/10 text-{p.color}">
+                <i class="fa-solid {p.icon} text-lg"></i>
               </div>
-              <h3 class="font-display font-semibold text-gray-900 dark:text-white">{p.title}</h3>
+              <span class="font-mono text-xs uppercase text-gray-500">#{p.tags[0]}</span>
             </div>
-            <p class="mb-4 flex-1 text-sm text-gray-600 dark:text-gray-400">{p.desc}</p>
+            <h3 class="mb-2 font-mono text-sm font-bold uppercase text-neon-cyan">{p.title}</h3>
+            <p class="mb-4 flex-1 font-mono text-xs leading-relaxed text-gray-400">{p.desc}</p>
             <div class="mb-4 flex flex-wrap gap-1.5">
               {#each p.tags as tag}
-                <span class="tag bg-gray-100 text-gray-600 dark:bg-surface-3 dark:text-gray-400">{tag}</span>
+                <span class="rounded border border-dark-border bg-dark-elevated px-2 py-0.5 font-mono text-xs text-gray-500">{tag}</span>
               {/each}
             </div>
-            <div class="flex gap-2">
-              <a href={p.repo} target={p.repo.startsWith('http') ? '_blank' : undefined} rel="noreferrer" class="btn-outline text-xs px-3 py-1.5">
-                <i class="fa-solid {p.repoLabel ? 'fa-circle-info' : 'fa-github'} text-xs"></i> {p.repoLabel || 'Repositório'}
-              </a>
+            <a href={p.repo} target={p.repo.startsWith('http') ? '_blank' : undefined} rel="noreferrer" class="rounded border-2 border-neon-cyan bg-transparent px-3 py-1.5 text-center font-mono text-xs font-bold uppercase text-neon-cyan transition-all hover:bg-neon-cyan hover:text-black">
+              {p.repoLabel || 'REPO →'}
+            </a>
+          </div>
+        {/each}
+      </div>
+    </div>
+  </section>
+
+  <section id="sites" class="py-16">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="reveal mb-8">
+        <p class="mb-1 font-mono text-xs uppercase tracking-widest text-neon-purple">[04_SITES]</p>
+        <h2 class="neon-heading font-graffiti text-3xl font-black uppercase text-neon-green">Web Presence</h2>
+      </div>
+      <div class="reveal grid gap-6 lg:grid-cols-2">
+        {#each sites as site}
+          <div class="group section-card transition-all duration-300 hover:border-{site.color}/60">
+            <div class="mb-4 flex items-center justify-between">
+              <div class="flex h-14 w-14 items-center justify-center rounded-lg border-2 border-{site.color} bg-{site.color}/10">
+                <i class="fa-solid {site.icon} text-2xl text-{site.color}"></i>
+              </div>
+              <span class="animate-neon-pulse rounded border border-{site.color} px-2 py-1 font-mono text-xs font-bold uppercase text-{site.color}">{site.status}</span>
             </div>
+            <h3 class="mb-2 font-mono text-xl font-black uppercase text-{site.color}">{site.title}</h3>
+            <p class="mb-4 font-mono text-sm leading-relaxed text-gray-400">{site.desc}</p>
+            <a href={site.url} target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 font-mono text-sm font-bold uppercase text-{site.color} transition-all hover:gap-3">
+              ACESSAR <i class="fa-solid fa-arrow-right"></i>
+            </a>
           </div>
         {/each}
       </div>
@@ -354,38 +337,29 @@
   <section id="interesses" class="py-16">
     <div class="mx-auto max-w-6xl px-4">
       <div class="reveal mb-8">
-        <p class="mb-1 font-mono text-xs text-emerald-600 dark:text-accent">// 04</p>
-        <h2 class="font-display text-2xl font-bold text-gray-900 dark:text-white">Interesses</h2>
-        <p class="text-sm text-gray-500 dark:text-gray-400">Áreas que eu gosto de estudar/pesquisar.</p>
+        <p class="mb-1 font-mono text-xs uppercase tracking-widest text-neon-yellow">[05_INTERESSES]</p>
+        <h2 class="neon-heading font-graffiti text-3xl font-black uppercase text-neon-cyan">Interesses</h2>
       </div>
-
       <div class="reveal grid gap-6 lg:grid-cols-2">
         <div class="section-card">
-          <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
-            <li>Engenharia de Software aplicada a projetos reais</li>
-            <li>Análise de Dados e estatística</li>
-            <li>Desenvolvimento Web (Front-end e Back-end)</li>
-            <li>Banco de Dados e modelagem relacional</li>
-            <li>Estruturas de dados e lógica de programação</li>
-            <li>Automação e produtividade no Linux</li>
+          <ul class="space-y-2">
+            {#each interesses as item}
+              <li class="flex items-start gap-2 font-mono text-sm text-gray-300">
+                <i class="fa-solid fa-caret-right mt-0.5 text-neon-pink" style="font-size: 11px;"></i>
+                {item}
+              </li>
+            {/each}
           </ul>
         </div>
         <div class="section-card">
-          <h3 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Atividades</h3>
-          <p class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-            Curso Sistemas de Informação na UFLA e participo de projeto de extensão com
-            foco em refatoração de software e melhoria de processos.
+          <h3 class="mb-3 font-mono text-sm font-bold uppercase tracking-wider text-neon-cyan">Atividades</h3>
+          <p class="mb-4 font-mono text-sm text-gray-400">
+            Curso Sistemas de Informação na UFLA e participo de projeto de extensão com foco em refatoração de software e melhoria de processos.
           </p>
           <div class="flex flex-wrap gap-2">
-            <span class="tag bg-gray-100 text-gray-700 dark:bg-surface-3 dark:text-gray-300">
-              <i class="fa-solid fa-book mr-1 text-xs"></i>Estudos contínuos
-            </span>
-            <span class="tag bg-gray-100 text-gray-700 dark:bg-surface-3 dark:text-gray-300">
-              <i class="fa-solid fa-people-group mr-1 text-xs"></i>Colaboração em equipe
-            </span>
-            <span class="tag bg-gray-100 text-gray-700 dark:bg-surface-3 dark:text-gray-300">
-              <i class="fa-solid fa-terminal mr-1 text-xs"></i>Projeto de extensão
-            </span>
+            <span class="tag text-paper/60 border-paper/30"><i class="fa-solid fa-book mr-1"></i>Estudos contínuos</span>
+            <span class="tag text-paper/60 border-paper/30"><i class="fa-solid fa-people-group mr-1"></i>Colaboração</span>
+            <span class="tag text-paper/60 border-paper/30"><i class="fa-solid fa-terminal mr-1"></i>Proj. extensão</span>
           </div>
         </div>
       </div>
@@ -395,76 +369,68 @@
   <section id="contato" class="py-16">
     <div class="mx-auto max-w-6xl px-4">
       <div class="reveal mb-8">
-        <p class="mb-1 font-mono text-xs text-emerald-600 dark:text-accent">// 05</p>
-        <h2 class="font-display text-2xl font-bold text-gray-900 dark:text-white">Contato</h2>
-        <p class="text-sm text-gray-500 dark:text-gray-400">Como falar comigo.</p>
+        <p class="mb-1 font-mono text-xs uppercase tracking-widest text-neon-yellow">[06_CONTATO]</p>
+        <h2 class="neon-heading font-graffiti text-3xl font-black uppercase text-neon-cyan">Get in Touch</h2>
       </div>
-
       <div class="reveal grid gap-6 lg:grid-cols-2">
         <div class="section-card">
-          <h3 class="mb-4 font-mono text-sm font-semibold text-gray-500 dark:text-gray-400">$ contact --info</h3>
-          <ul class="space-y-4">
+          <h3 class="mb-4 font-mono text-sm font-bold uppercase tracking-wider text-neon-pink">$ whoami</h3>
+          <ul class="space-y-4 font-mono">
             <li class="flex items-center gap-3">
-              <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-gray-100 dark:bg-surface-3">
-                <i class="fa-solid fa-envelope text-emerald-500 dark:text-accent"></i>
+              <span class="flex h-10 w-10 items-center justify-center rounded border-2 border-neon-cyan bg-neon-cyan/10">
+                <i class="fa-solid fa-envelope text-neon-cyan"></i>
               </span>
-              <div>
-                <p class="text-xs text-gray-400">email</p>
-                <a href="mailto:Brites.joaop@gmail.com" class="text-sm font-medium text-gray-800 hover:text-emerald-600 dark:text-gray-200 dark:hover:text-accent">
-                  Brites.joaop@gmail.com
-                </a>
+              <div class="text-xs">
+                <p class="uppercase text-gray-500">EMAIL</p>
+                <a href="mailto:Brites.joaop@gmail.com" class="text-neon-cyan hover:underline">Brites.joaop@gmail.com</a>
               </div>
             </li>
             <li class="flex items-center gap-3">
-              <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-gray-100 dark:bg-surface-3">
-                <i class="fa-solid fa-phone text-emerald-500 dark:text-accent"></i>
+              <span class="flex h-10 w-10 items-center justify-center rounded border-2 border-neon-green bg-neon-green/10">
+                <i class="fa-solid fa-phone text-neon-green"></i>
               </span>
-              <div>
-                <p class="text-xs text-gray-400">telefone</p>
-                <p class="text-sm font-medium text-gray-800 dark:text-gray-200">(35) 99946-5270</p>
+              <div class="text-xs">
+                <p class="uppercase text-gray-500">PHONE</p>
+                <p class="text-gray-300">(35) 99946-5270</p>
               </div>
             </li>
             <li class="flex items-center gap-3">
-              <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-gray-100 dark:bg-surface-3">
-                <i class="fa-brands fa-github text-emerald-500 dark:text-accent"></i>
+              <span class="flex h-10 w-10 items-center justify-center rounded border-2 border-neon-pink bg-neon-pink/10">
+                <i class="fa-brands fa-github text-neon-pink"></i>
               </span>
-              <div>
-                <p class="text-xs text-gray-400">github</p>
-                <a href="https://github.com/joaopbrites" target="_blank" rel="noreferrer" class="text-sm font-medium text-gray-800 hover:text-emerald-600 dark:text-gray-200 dark:hover:text-accent">
-                  github.com/joaopbrites
-                </a>
+              <div class="text-xs">
+                <p class="uppercase text-gray-500">GITHUB</p>
+                <a href="https://github.com/joaopbrites" target="_blank" rel="noreferrer" class="text-neon-pink hover:underline">github.com/joaopbrites</a>
               </div>
             </li>
             <li class="flex items-center gap-3">
-              <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-gray-100 dark:bg-surface-3">
-                <i class="fa-brands fa-linkedin text-emerald-500 dark:text-accent"></i>
+              <span class="flex h-10 w-10 items-center justify-center rounded border-2 border-neon-purple bg-neon-purple/10">
+                <i class="fa-brands fa-linkedin text-neon-purple"></i>
               </span>
-              <div>
-                <p class="text-xs text-gray-400">linkedin</p>
-                <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" class="text-sm font-medium text-gray-800 hover:text-emerald-600 dark:text-gray-200 dark:hover:text-accent">
-                  linkedin.com
-                </a>
+              <div class="text-xs">
+                <p class="uppercase text-gray-500">LINKEDIN</p>
+                <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" class="text-neon-purple hover:underline">linkedin.com</a>
               </div>
             </li>
           </ul>
         </div>
-
         <div class="section-card">
-          <ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
-            <li class="flex items-center gap-2">
-              <i class="fa-solid fa-map-pin text-emerald-500 dark:text-accent"></i>
+          <h3 class="mb-4 font-mono text-sm font-bold uppercase tracking-wider text-neon-cyan">$ info --extra</h3>
+          <ul class="space-y-3 font-mono text-xs text-gray-400">
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-map-pin mt-0.5 text-neon-cyan"></i>
               Bom Sucesso - MG (disponível para Lavras)
             </li>
-            <li class="flex items-center gap-2">
-              <i class="fa-solid fa-user-tie text-emerald-500 dark:text-accent"></i>
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-user-tie mt-0.5 text-neon-pink"></i>
               Conselheiro Fiscal (atividade voluntária)
             </li>
-            <li class="flex items-center gap-2">
-              <i class="fa-solid fa-briefcase text-emerald-500 dark:text-accent"></i>
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-briefcase mt-0.5 text-neon-green"></i>
               Projeto de Extensão UFLA (2025 - atual)
             </li>
-            <li class="flex items-center gap-2">
-              <i class="fa-solid fa-graduation-cap text-emerald-500 dark:text-accent"></i>
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-graduation-cap mt-0.5 text-neon-yellow"></i>
               Curso CDPO/USP - Estatística e Otimização (2025)
             </li>
           </ul>
@@ -474,13 +440,9 @@
   </section>
 </main>
 
-<footer class="border-t border-gray-200 bg-white py-6 dark:border-border dark:bg-surface">
+<footer class="border-t-2 border-neon-cyan/30 bg-dark-surface py-6">
   <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-4 text-center md:flex-row">
-    <p class="font-mono text-xs text-gray-400">
-      © {new Date().getFullYear()} Página Pessoal - João Pedro Brites
-    </p>
-    <p class="font-mono text-xs text-gray-400">
-      Feito com Svelte + Tailwind CSS
-    </p>
+    <p class="font-mono text-xs text-gray-500"><span class="text-neon-cyan">©</span> {new Date().getFullYear()} <span class="text-neon-pink">João Pedro Brites</span></p>
+    <p class="font-mono text-xs text-gray-500">Made with <span class="text-neon-pink">Svelte</span> + <span class="text-neon-cyan">Tailwind CSS</span></p>
   </div>
 </footer>
